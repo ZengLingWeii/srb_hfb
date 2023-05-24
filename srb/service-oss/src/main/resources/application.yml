@@ -15,6 +15,6 @@ spring:
 aliyun:
   oss:
     endpoint: oss-cn-hangzhou.aliyuncs.com
-    keyId: LTAI5t7fogM9h14HabpNejqt
-    keySecret: uBVg45R3V6ARELCzbDXUDVHfYtqR0e
+    keyId: 
+    keySecret: 
     bucketName: zlw-srb-file
