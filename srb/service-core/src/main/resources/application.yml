@@ -15,7 +15,7 @@ spring:
     driver-class-name: com.mysql.cj.jdbc.Driver
     url: jdbc:mysql://120.78.161.13:3306/db2023_srb_core?serverTimezone=GMT%2B8&characterEncoding=utf-8
     username: root
-    password: admin123
+    password: 
 
   cloud:
     nacos:
