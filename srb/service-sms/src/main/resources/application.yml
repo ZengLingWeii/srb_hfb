@@ -52,7 +52,7 @@ logging:
 aliyun:
   sms:
     region-id: cn-hangzhou
-    key-id: LTAI5t7fogM9h14HabpNejqt
-    key-secret: uBVg45R3V6ARELCzbDXUDVHfYtqR0e
+    key-id: 
+    key-secret: 
     template-code: SMS_275230494
     sign-name: zlw的验证码
