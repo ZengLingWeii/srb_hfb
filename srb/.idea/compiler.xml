@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="CompilerConfiguration">
+    <annotationProcessing>
+      <profile default="true" name="Default" enabled="true" />
+      <profile name="Maven default annotation processors profile" enabled="true">
+        <sourceOutputDir name="target/generated-sources/annotations" />
+        <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
+        <outputRelativeToContentRoot value="true" />
+        <module name="rabbit-mq" />
+        <module name="service-gateway" />
+        <module name="service-base" />
+        <module name="guigu-common" />
+        <module name="service-core" />
+        <module name="service-oss" />
+        <module name="service-sms" />
+      </profile>
+    </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="guigu-common" target="1.8" />
+      <module name="rabbit-mq" target="1.8" />
+      <module name="service-base" target="1.8" />
+      <module name="service-core" target="1.8" />
+      <module name="service-gateway" target="1.8" />
+      <module name="service-oss" target="1.8" />
+      <module name="service-sms" target="1.8" />
+      <module name="srb" target="1.8" />
+    </bytecodeTargetLevel>
+  </component>
+  <component name="JavacSettings">
+    <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="guigu-common" options="-parameters" />
+      <module name="rabbit-mq" options="-parameters" />
+      <module name="service-base" options="-parameters" />
+      <module name="service-core" options="-parameters" />
+      <module name="service-gateway" options="-parameters" />
+      <module name="service-oss" options="-parameters" />
+      <module name="service-sms" options="-parameters" />
+      <module name="srb" options="" />
+    </option>
+  </component>
+</project>

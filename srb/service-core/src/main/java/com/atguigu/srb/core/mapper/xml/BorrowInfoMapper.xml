@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.atguigu.srb.core.mapper.BorrowInfoMapper">
+    <select id = "selectBorrowInfoList" resultType="com.atguigu.srb.core.pojo.entity.BorrowInfo">
+        <!--LEFT JOIN ...ON...是集合A和集合B的非交A-->
+        SELECT
+        bi.*,
+        b.name,
+        b.mobile
+        FROM
+        borrow_info AS bi
+        LEFT JOIN borrower AS b ON bi.user_id = b.user_id
+        WHERE bi.is_deleted = 0
+    </select>
+</mapper>

@@ -1,0 +1,58 @@
+server:
+  port: 8120 # 服务端口
+
+#spring:
+spring:
+  profiles:
+    active: dev # 环境设置
+  application:
+    name: service-sms # 服务名
+
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 120.78.161.13:8848 # nacos服务地址
+
+  rabbitmq:
+    host: 120.78.161.13
+    port: 5672
+    virtual-host: /ZlwRabbitMQHost
+    username: admin
+    password: 123456
+
+feign:
+  client:
+    config:
+      default:
+        connectTimeout: 10000 #远程服务调用连接超时配置
+        readTimeout: 600000 #远程服务调用执行超时配置
+
+  sentinel:
+    enabled: true #开启服务熔断
+
+logging:
+  level:
+    com.atguigu.srb.client.CoreUserInfoClient: DEBUG #以什么级别监控哪个接口
+
+  #redis:
+  redis:
+    host: 120.78.161.13
+    port: 6379
+    database: 0
+    password:  #默认为空
+    timeout: 3000ms #最大等待时间，超时则抛出异常，否则请求一直等待
+    lettuce:
+      pool:
+        max-active: 20  #最大连接数，负值表示没有限制，默认8
+        max-wait: -1    #最大阻塞等待时间，负值表示没限制，默认-1
+        max-idle: 8     #最大空闲连接，默认8
+        min-idle: 0     #最小空闲连接，默认0
+
+#阿里云短信
+aliyun:
+  sms:
+    region-id: cn-hangzhou
+    key-id: LTAI5t7fogM9h14HabpNejqt
+    key-secret: uBVg45R3V6ARELCzbDXUDVHfYtqR0e
+    template-code: SMS_275230494
+    sign-name: zlw的验证码

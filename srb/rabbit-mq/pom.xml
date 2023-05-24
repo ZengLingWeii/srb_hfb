@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>srb</artifactId>
+        <groupId>com.atguigu</groupId>
+        <version>0.0.1-SNAPSHOT</version>
+    </parent>
+    <modelVersion>4.0.0</modelVersion>
+
+    <artifactId>rabbit-mq</artifactId>
+
+    <dependencies>
+        <!--启动RabbitMQ命令：systemctl start rabbitmq-service-->
+        <!--停止RabbitMQ命令：systemctl stop rabbitmq-service.service-->
+        <!--重启RabbitMQ命令: systemctl restart rabbitmq-service.service-->
+        <!--查看RabbitMQ状态: systemctl status rabbitmq-service.service-->
+        <!--关闭防火墙：systemctl stop firewalled.service-->
+        <!--RabbitMQ添加管理员账号密码-：rabbitmqctl add_user admin admin-->
+        <!--RabbitMQ分配账号角色：rabbitmqctl set_user_tags admin administrator-->
+        <!--RabbitMQ修改密码：rabbitmqctl change_password admin 密码-->
+        <!--RabbitMQ查看用户列表：rabbitmqctl list_users-->
+        <!--RabbitMQ(120.78.161.13:15672)默认登入用户名：guest、默认登入密码: guest-->
+        <!--RabbitMQ添加了账户：admin,密码：123456-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
+    </dependencies>
+
+
+</project>

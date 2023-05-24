@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<configuration>
+    <!-- 日志logback-spring.xml名称   -->
+    <contextName>atguiguSrb</contextName>
+
+    <!-- 设置日志输出文件路径   -->
+    <property name="log.path" value="/root/srb_log/oss"/>
+
+    <!-- 设置控制台日志输出样式   -->
+    <!-- yellow日志日期颜色黄色  highlight高亮 %-5level占五个字符  %green日志内容颜色绿色 -->
+    <property name="CONSOLE_LOG_PATTERN"
+              value="%yellow(%date{yyyy-MM-dd HH:mm:ss}) %highlight([%-5level]) %green(%logger) %msg%n" />
+
+    <!--  设置文件日志格输出样式 -->
+    <!--  日志文件不必设置颜色 %thread表示线程  -->
+    <property name="FILE_LOG_PATTERN"
+              value="%date{yyyy-MM-dd HH:mm:ss} [%-5level] %thread%file:%line %logger %msg%n"/>
+
+    <!--  日志输出编码格式  -->
+    <property name="ENCODING" value="UTF-8" />
+
+    <!--  控制台日志  -->
+    <appender name="CONSOLE" class="ch.qos.logback.core.ConsoleAppender">
+        <encoder>
+            <pattern>${CONSOLE_LOG_PATTERN}</pattern>
+            <charset>${ENCODING}</charset>
+        </encoder>
+    </appender>
+
+    <!--  文件日志输出  -->
+    <appender name="FILE" class="ch.qos.logback.core.FileAppender">
+        <file>${log.path}/log.log</file>
+        <append>true</append>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>${ENCODING}</charset>
+        </encoder>
+    </appender>
+
+    <!--  滚动日志输出  -->
+    <appender name="ROLLING_FILE" class="ch.qos.logback.core.rolling.RollingFileAppender">
+
+        <!--  要区别其他的appender中的文件名字 -->
+        <file>${log.path}/log-rolling.log</file>
+        <encoder>
+            <pattern>${FILE_LOG_PATTERN}</pattern>
+            <charset>${ENCODING}</charset>
+        </encoder>
+
+        <!--  设置滚动日志记录的滚动策略 -->
+        <rollingPolicy class="ch.qos.logback.core.rolling.TimeBasedRollingPolicy">
+            <!--  日志归档路径和格式 -->
+            <fileNamePattern>${log.path}/info/log-rolling-%d{yyyy-MM-dd}.%i.log</fileNamePattern>
+            <!--  归档日志文件保留最大日期  -->
+            <maxHistory>30</maxHistory>
+
+            <!-- 日志归档的最大内存  -->
+            <timeBasedFileNamingAndTriggeringPolicy class="ch.qos.logback.core.rolling.SizeAndTimeBasedFNATP">
+                <maxFileSize>500MB</maxFileSize>
+            </timeBasedFileNamingAndTriggeringPolicy>
+        </rollingPolicy>
+    </appender>
+
+    <!--  日志记录器  -->
+    <!--  name为扫描包的路径、level为日志等级、appender-ref为日志输出(控制台/文件)  -->
+    <logger name="com.atguigu" level="INFO">
+        <appender-ref ref="CONSOLE"/>
+        <appender-ref ref="FILE"/>
+    </logger>
+
+    <!--  开发环境和测试环境  -->
+    <springProfile name="dev,test">
+        <logger name="com.atguigu" level="INFO">
+            <appender-ref ref="CONSOLE"/>
+        </logger>
+    </springProfile>
+
+    <!--  生产环境  -->
+    <springProfile name="prod">
+        <logger name="com.atguigu" level="ERROR">
+            <appender-ref ref="CONSOLE"/>
+            <appender-ref ref="ROLLING_FILE"/>
+        </logger>
+    </springProfile>
+
+</configuration>
